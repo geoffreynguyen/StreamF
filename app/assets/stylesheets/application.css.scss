@@ -15,7 +15,7 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import '../../grayscale-sass/assets/sass/main.scss';
+@import '../../../public/system/grayscale-sass/assets/sass/main.scss';
 
 .intro {
   background: $grayscale-dark url(bg-3.png) no-repeat scroll bottom center;
