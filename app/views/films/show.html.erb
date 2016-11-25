@@ -33,6 +33,10 @@
           <strong>Année:</strong>
           <%= @film.date_sortie.strftime("%d/%m/%Y") %>
         </p>
+        <p>
+          <strong>Catégorie:</strong>
+          <%=@film.categorie.libelle%>
+        </p>
 
       </div>
 

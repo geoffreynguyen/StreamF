@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124115701) do
+ActiveRecord::Schema.define(version: 20161125134718) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "libelle"
@@ -20,18 +20,20 @@ ActiveRecord::Schema.define(version: 20161124115701) do
 
   create_table "films", force: :cascade do |t|
     t.string   "titre"
-    t.datetime "date_sortie",         null: false
+    t.datetime "date_sortie"
+    t.datetime "duree"
     t.string   "synopsis"
+    t.string   "auteur"
+    t.string   "avis"
+    t.string   "video"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
     t.datetime "poster_updated_at"
-    t.text     "avis"
-    t.text     "auteur"
-    t.text     "video"
-    t.datetime "duree",               null: false
+    t.integer  "categorie_id"
+    t.index ["categorie_id"], name: "index_categorie_id"
   end
 
   create_table "utilisateurs", force: :cascade do |t|

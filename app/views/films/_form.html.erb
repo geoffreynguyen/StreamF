@@ -37,6 +37,10 @@
           <%= f.time_select(:duree, :minute_step => 5)
           %>
         </div>
+        <div class="form">
+          <%=f.label :categorie_id%>
+          <%= f.collection_select :categorie_id, Categorie.order("libelle").all, :id, :libelle %>
+        </div>
       </div>
 
       <div class="col-sm-6 col-md-6">
