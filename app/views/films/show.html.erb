@@ -15,5 +15,10 @@
   <%= @film.synopsis %>
 </p>
 
+<p>
+  <strong>Catégorie:</strong>
+  <%=@film.categorie.libelle%>
+</p>
+
 <%= link_to 'Edit', edit_film_path(@film) %> |
 <%= link_to 'Back', films_path %>

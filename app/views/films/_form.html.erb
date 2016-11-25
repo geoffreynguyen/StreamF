@@ -26,6 +26,13 @@
     <%= f.text_field :synopsis %>
   </div>
 
+    <div class="form">
+      <%=f.label :categorie_id%>
+      <%= f.collection_select :categorie_id, Categorie.order("libelle").all, :id, :libelle %>
+    </div>
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

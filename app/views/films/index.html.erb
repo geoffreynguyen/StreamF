@@ -2,30 +2,44 @@
 
 <h1>Films</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Titre</th>
-      <th>Date sortie</th>
-      <th>Synopsis</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @films.each do |film| %>
+<%= form_tag(films_path, :method => "get") do %>
+    <%=label_tag('comment',"Recherche par catégorie")%>
+    <%= collection_select(:search,:categorie_id,Categorie.all,:id,:libelle, :selected=>@prevIndex)%>
+    <%= submit_tag "Recharger", :name=>nil %>
+<% end %>
+
+
+<% if @films.blank? %>
+    <h4>There are no recipes containing the term <%= params[:search] %>.</h4>
+<% else %>
+    <table class="table-bordered">
+      <thead>
       <tr>
-        <td><%= film.titre %></td>
-        <td><%= film.date_sortie %></td>
-        <td><%= film.synopsis %></td>
-        <td><%= link_to 'Show', film %></td>
-        <td><%= link_to 'Edit', edit_film_path(film) %></td>
-        <td><%= link_to 'Destroy', film, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Titre</th>
+        <th>Date sortie</th>
+        <th>Synopsis</th>
+        <th>Catégorie</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @films.each do |film| %>
+          <tr>
+            <td><%= film.titre %></td>
+            <td><%= film.date_sortie %></td>
+            <td><%= film.synopsis %></td>>
+            <td><%=film.categorie%></td>
+            <td><%= link_to 'Show', film %></td>
+            <td><%= link_to 'Edit', edit_film_path(film) %></td>
+            <td><%= link_to 'Destroy', film, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <br>
+<% end %>
+
 
 <%= link_to 'New Film', new_film_path %>
