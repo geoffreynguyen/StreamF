@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import '../../grayscale-sass/assets/sass/main.scss';
+
+.intro {
+  background: $grayscale-dark url(bg-3.png) no-repeat scroll bottom center;
+}
+
+#contact {
+  margin-bottom: 100px;
+}

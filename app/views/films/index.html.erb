@@ -1,31 +1,54 @@
-<p id="notice"><%= notice %></p>
+<!-- Intro Header -->
+<header class="intro">
+  <div class="intro-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <h1 class="brand-heading">Stream F</h1>
+          <p class="intro-text">Toujours plus de films en streaming</p>
+          <a href="#about" class="btn btn-circle page-scroll pulse">
+            <i class="fa fa-angle-double-down"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-<h1>Films</h1>
+<!-- About Section -->
+<section id="about" class="container content-section text-center">
+  <div class="row">
+    <div class="col-lg-12 col-lg-offset-2">
+      <% @films.each do |film| %>
+        <%= link_to(film) do %>
+          <div class="thumbnail col-sm-6 col-md-3">
+            <%= image_tag film.poster.url(:medium), class: 'image' %>
+            <div class="title-film">
+              <h3><%= film.titre%></h3>
+              <p>
+                <%= truncate(film.synopsis, :length => 40) %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>
 
-<table>
-  <thead>
-    <tr>
-      <th>Titre</th>
-      <th>Date sortie</th>
-      <th>Synopsis</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @films.each do |film| %>
-      <tr>
-        <td><%= film.titre %></td>
-        <td><%= film.date_sortie %></td>
-        <td><%= film.synopsis %></td>
-        <td><%= link_to 'Show', film %></td>
-        <td><%= link_to 'Edit', edit_film_path(film) %></td>
-        <td><%= link_to 'Destroy', film, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Film', new_film_path %>
+<!-- Contact Section -->
+<section id="contact" class="container content-section text-center">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <h2>Contact Stream F</h2>
+      <p>Pour donner votre avis, signaler un incident, demander plus de film ou bénéficier d'un compte premium.N'hésitez pas à nous contacter !</p>
+      <p>
+      </p>
+      <ul class="list-inline banner-social-buttons">
+        <li>
+          <a href="mailto:streamf@gmail.com" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-envelope"></i> <span class="network-name">Contact</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

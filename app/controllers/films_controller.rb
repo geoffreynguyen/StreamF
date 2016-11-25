@@ -28,7 +28,7 @@ class FilmsController < ApplicationController
 
     respond_to do |format|
       if @film.save
-        format.html { redirect_to @film, notice: 'Film was successfully created.' }
+        format.html { redirect_to @film, notice: 'Le film a été ajouté avec succès.' }
         format.json { render :show, status: :created, location: @film }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class FilmsController < ApplicationController
   def update
     respond_to do |format|
       if @film.update(film_params)
-        format.html { redirect_to @film, notice: 'Film was successfully updated.' }
+        format.html { redirect_to @film, notice: 'Le film a été mis à jour.' }
         format.json { render :show, status: :ok, location: @film }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class FilmsController < ApplicationController
   def destroy
     @film.destroy
     respond_to do |format|
-      format.html { redirect_to films_url, notice: 'Film was successfully destroyed.' }
+      format.html { redirect_to films_url, notice: 'Le film a été supprimé.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class FilmsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def film_params
-      params.require(:film).permit(:titre, :date_sortie, :synopsis)
+      params.require(:film).permit(:titre, :date_sortie, :synopsis, :avis, :video, :auteur, :duree, :poster)
     end
 end

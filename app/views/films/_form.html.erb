@@ -1,32 +1,64 @@
-<%= form_for(film) do |f| %>
-  <% if film.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(film.errors.count, "error") %> prohibited this film from being saved:</h2>
+  <%= form_for(film) do |f| %>
+    <% if film.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(film.errors.count, "error") %> prohibited this film from being saved:</h2>
 
-      <ul>
-      <% film.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+        <ul>
+        <% film.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+      <div class="infos col-sm-6 col-md-6">
+        <div class="field">
+          <%= f.label :titre %>
+          <%= f.text_field(:titre, class: "form-control") %>
+        </div>
+        <div class="field">
+          <%= f.label :auteur %>
+          <%= f.text_field(:auteur, class: "form-control") %>
+        </div>
+        <div class="field">
+          <%= f.label :avis %>
+          <%= f.text_field(:avis, class: "form-control") %>
+        </div>
+        <div class="field">
+          <%= f.label :synopsis %>
+          <%= f.text_area(:synopsis, class: "form-control")%>
+        </div>
+        <div class="field">
+          <%= f.label :date_sortie %>
+          <%= f.date_select :date_sortie %>
+        </div>
+        <div class="field">
+          <%= f.label :duree %>
+          <%= f.time_select(:duree, :minute_step => 5)
+          %>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-6">
+        <%= image_tag film.poster.url(:medium), class: 'image' %>
+        <div class="field">
+          <%= f.label :poster %>
+          <%= f.file_field :poster %>
+        </div>
+
+        <div class="field">
+          <%= f.label :video %>
+          <%= f.text_area(:video, class: "form-control")%>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-12">
+
+      </div>
+      <div class="col-sm-6 col-md-12">
+        <div class="actions">
+          <%= f.submit "Ajouter" %>
+        </div>
+      </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :titre %>
-    <%= f.text_field :titre %>
-  </div>
-
-  <div class="field">
-    <%= f.label :date_sortie %>
-    <%= f.datetime_select :date_sortie %>
-  </div>
-
-  <div class="field">
-    <%= f.label :synopsis %>
-    <%= f.text_field :synopsis %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

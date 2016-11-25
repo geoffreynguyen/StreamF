@@ -1,5 +1,10 @@
-<h1>New Film</h1>
-
-<%= render 'form', film: @film %>
-
-<%= link_to 'Back', films_path %>
+<section id="new" class="container content-section text-center">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="col-sm-6 col-md-12">
+        <h1>Ajouter un film</h1>
+        <%= render 'form', film: @film %>
+      </div>
+    </div>
+  </div>
+</section>

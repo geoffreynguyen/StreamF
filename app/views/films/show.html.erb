@@ -1,19 +1,54 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Titre:</strong>
-  <%= @film.titre %>
-</p>
+<section id="show" class="container content-section text-center">
+  <div class="row">
+    <div class="col-lg-12">
 
-<p>
-  <strong>Date sortie:</strong>
-  <%= @film.date_sortie %>
-</p>
+      <div class="col-sm-6 col-md-12">
+        <p id="notice">
+          <%= notice %>
+        </p>
+        <iframe width="800" height="500" src="<%= @film.video %>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="description col-sm-6 col-md-2">
+      </div>
+      <div class="description col-sm-6 col-md-3">
+        <p>
+          <strong>Titre:</strong>
+          <%= @film.titre %>
+        </p>
 
-<p>
-  <strong>Synopsis:</strong>
-  <%= @film.synopsis %>
-</p>
+        <p>
+          <strong>Auteur:</strong>
+          <%= @film.auteur %>
+        </p>
+        <p>
+          <strong>Avis:</strong>
+          <%= @film.avis %>
+        </p>
+        <p>
+          <strong>Durée:</strong>
+          <%= @film.duree.strftime("%Ih%M") %>
+        </p>
+        <p>
+          <strong>Année:</strong>
+          <%= @film.date_sortie.strftime("%d/%m/%Y") %>
+        </p>
 
+      </div>
+
+      <div class="poster col-sm-6 col-md-7">
+        <%= image_tag @film.poster.url(:big) %>
+      </div>
+      <div class="description col-sm-6 col-md-1">
+        </div>
+      <div class="description col-sm-6 col-md-11">
+        <p>
+          <strong>Synopsis:</strong>
+          <%= @film.synopsis %>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 <%= link_to 'Edit', edit_film_path(@film) %> |
 <%= link_to 'Back', films_path %>
